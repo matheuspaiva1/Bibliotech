@@ -6,10 +6,8 @@ export default function Login() {
     <div>
         <main>
             <div>
-                <img src="" alt="" />
                 Bibliotech
                 <div>
-                    <img src="" alt="" />
                 </div>
             </div>
             <div>
