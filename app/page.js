@@ -1,8 +1,9 @@
+import Login from "./Pages/Login";
 
 export default function Home() {
   return (
-    <div className="">
-      hello world
+    <div className="font-sans">
+      <Login/>
     </div>
   );
 }
