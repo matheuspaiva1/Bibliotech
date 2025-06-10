@@ -18,11 +18,22 @@ import { Label } from "@/components/ui/label"
 // ICONES
 import { FaUserGear } from "react-icons/fa6";
 import { PiStudentBold } from "react-icons/pi";
+import { useRouter } from "next/navigation"; // Next.js 13+
 
-
+const mockUser = {
+  userName: "usuario",
+  password: "senha123",
+};
 
 export default function CardLogin() {
   const [activeTab, setActiveTab] = useState("admin")
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const handleChangeTabUser = () => {
       setActiveTab("user")
@@ -30,10 +41,15 @@ export default function CardLogin() {
 
   const handleChangeTabAdmin = () => {
     setActiveTab("admin")
-}
+  }
 
-
-
+  const handleLogin = (e) => {
+    debugger
+    e.preventDefault();
+    if (userName === "usuario" && password === "senha123") {
+      router.push("/dashboard"); // Redireciona
+    }
+  };
 
   return (
     <Card className="w-full max-w-sm rounded-xs m-auto">
@@ -64,32 +80,40 @@ export default function CardLogin() {
       </div>
     </CardHeader>
     <CardContent>
-      <form>
+      <form onSubmit={handleLogin}>
         <div className="flex flex-col">
           <div className="grid gap-2 relative">
             <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">{activeTab === "admin" ? "Usuário" : "Matrícula"}</p>
             <Input
               id="user"
-              type="email"
+              type="text"
               placeholder="m@example"
               className="h-16 pt-5 rounded-xs"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
               required
             />
           </div>
           <div className="grid gap-2 relative">
-              <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Password</p>
+              <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Senha</p>
             <Input 
                 id="password" 
                 type="password"
                 placeholder="******"
                 className="h-16 pt-4 rounded-xs"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required />
           </div>
         </div>
       </form>
     </CardContent>
     <CardFooter className="flex-col gap-2 mt-8">
-      <Button type="submit" className="w-full rounded-xs h-14 bg-[#4CAF50] text-xs font-light">
+      {error && <p className="error">{error}</p>}
+      <Button 
+      type="submit" 
+      className="w-full rounded-xs h-14 bg-[#4CAF50] text-xs font-light cursor-pointer hover:bg-[#FF873C]"
+      onClick={handleLogin}>
         ENTRAR
       </Button>
     </CardFooter>

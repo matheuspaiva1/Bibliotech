@@ -1,5 +1,5 @@
 import React from 'react'
-import CardLogin from '../Components/Card'
+import CardLogin from '../../Components/Card'
 
 export default function Login() {
   return (
