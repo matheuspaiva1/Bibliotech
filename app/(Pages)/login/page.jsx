@@ -1,20 +1,12 @@
-import React from 'react'
-import CardLogin from '../../Components/Card'
+import React from 'react';
+import CardLogin from '../../Components/Card';
+import ImageBackground from '../../Components/ImageBackground';
+
 
 export default function Login() {
   return (
-    <div>
-        <main>
-            <div>
-                Bibliotech
-                <div>
-                </div>
-            </div>
-            <div>
-                <CardLogin/>
-
-            </div>
-        </main>
-    </div>
-  )
+    <ImageBackground>
+      <CardLogin />
+    </ImageBackground>
+  );
 }
