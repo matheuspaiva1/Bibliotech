@@ -25,7 +25,7 @@ const mockUser = {
   password: "senha123",
 };
 
-export default function CardLogin() {
+export default function CardRegister() {
   const [activeTab, setActiveTab] = useState("admin")
 
   const [userName, setUserName] = useState("");
