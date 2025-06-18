@@ -46,15 +46,15 @@ export default function CardLogin() {
   const handleLogin = (e) => {
     debugger
     e.preventDefault();
-    if (userName === "usuario" && password === "senha123") {
+    if (userName === "usuario" && password === "1234") {
       router.push("/dashboard"); // Redireciona
     }
   };
 
   return (
-    <Card className="w-full max-w-sm rounded-xs m-auto">
+    <Card className="w-full max-w-md rounded-xs m-auto">
     <CardHeader>
-      <CardTitle className="text-center font-medium text-zinc-500">Login</CardTitle>
+      <CardTitle className="text-center font-medium text-zinc-500 my-4">Login</CardTitle>
       <div className="flex justify-center items-center gap-20 mt-6">
         <div 
         className={activeTab === "user" ? 'w-8 h-8 rounded-4xl border border-[#4CAF50] bg-[#4CAF50] cursor-pointer' : 'w-8 h-8 rounded-4xl border border-[#4CAF50] cursor-pointer hover:text-zinc-50 hover:bg-[#4CAF50]'}>
@@ -82,25 +82,25 @@ export default function CardLogin() {
     <CardContent>
       <form onSubmit={handleLogin}>
         <div className="flex flex-col">
-          <div className="grid gap-2 relative">
+          <div className="grid gap-2 relative ml-10">
             <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">{activeTab === "admin" ? "Usuário" : "Matrícula"}</p>
             <Input
               id="user"
               type="text"
               placeholder="m@example"
-              className="h-16 pt-5 rounded-xs"
+              className="h-16 pt-5 rounded-xs w-80"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               required
             />
           </div>
-          <div className="grid gap-2 relative">
+          <div className="grid gap-2 relative ml-10">
               <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Senha</p>
             <Input 
                 id="password" 
                 type="password"
                 placeholder="******"
-                className="h-16 pt-4 rounded-xs"
+                className="h-16 pt-4 rounded-xs w-80"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required />
@@ -112,7 +112,7 @@ export default function CardLogin() {
       {error && <p className="error">{error}</p>}
       <Button 
       type="submit" 
-      className="w-full rounded-xs h-14 bg-[#4CAF50] text-xs font-light cursor-pointer hover:bg-[#FF873C]"
+      className="w-80 rounded-xs h-14 bg-[#4CAF50] text-xs font-light cursor-pointer hover:bg-[#FF873C]"
       onClick={handleLogin}>
         ENTRAR
       </Button>

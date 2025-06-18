@@ -26,10 +26,12 @@ const mockUser = {
 };
 
 export default function CardRegister() {
-  const [activeTab, setActiveTab] = useState("admin")
+  const [activeTab, setActiveTab] = useState("user")
 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [registration, setRegistration] = useState("");
+
 
   const [error, setError] = useState("");
 
@@ -44,7 +46,6 @@ export default function CardRegister() {
   }
 
   const handleLogin = (e) => {
-    debugger
     e.preventDefault();
     if (userName === "usuario" && password === "senha123") {
       router.push("/dashboard"); // Redireciona
@@ -52,59 +53,52 @@ export default function CardRegister() {
   };
 
   return (
-    <Card className="w-full max-w-sm rounded-xs m-auto">
+    <Card className="w-full max-w-md rounded-xs m-auto">
     <CardHeader>
-      <CardTitle className="text-center font-medium text-zinc-500">Login</CardTitle>
-      <div className="flex justify-center items-center gap-20 mt-6">
-        <div 
-        className={activeTab === "user" ? 'w-8 h-8 rounded-4xl border border-[#4CAF50] bg-[#4CAF50] cursor-pointer' : 'w-8 h-8 rounded-4xl border border-[#4CAF50] cursor-pointer hover:text-zinc-50 hover:bg-[#4CAF50]'}>
-          <button 
-            onClick={handleChangeTabUser}
-            className={activeTab === "user" ? "cursor-pointer" : "cursor-pointer "}
-          >
-            <PiStudentBold
-              className={activeTab === "user" ? 'mx-2 my-1.5 text-zinc-50' : 'mx-2 my-1.5 text-[#4CAF50] hover:text-zinc-50 hover:bg-[#4CAF50]'}
-            />
-          </button>
-        </div>
-        <div 
-          className={activeTab === "admin" ? 'w-8 h-8 rounded-4xl border border-[#4CAF50] bg-[#4CAF50] cursor-pointer' : 'w-8 h-8 rounded-4xl border border-[#4CAF50] cursor-pointer hover:text-zinc-50 hover:bg-[#4CAF50]'}
-        >
-          <button
-            onClick={handleChangeTabAdmin}
-            className={activeTab === "admin" ? "cursor-pointer " : "cursor-pointer hover:text-zinc-50"}
-          >
-            <FaUserGear className={activeTab === "admin" ? 'mx-2 my-1.5 text-zinc-50' : 'mx-2 my-1.5 text-[#4CAF50] hover:text-zinc-50 '} />  
-          </button>
-        </div>
-      </div>
+      <CardTitle className="text-center font-medium text-zinc-500 my-4">Cadastro</CardTitle>
     </CardHeader>
     <CardContent>
       <form onSubmit={handleLogin}>
         <div className="flex flex-col">
-          <div className="grid gap-2 relative">
-            <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">{activeTab === "admin" ? "Usuário" : "Matrícula"}</p>
+          <div className="grid gap-2 relative ml-10">
+            <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Nome</p>
             <Input
               id="user"
               type="text"
-              placeholder="m@example"
-              className="h-16 pt-5 rounded-xs"
+              placeholder="matheus"
+              className="h-16 pt-5 rounded-xs w-80 "
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               required
             />
           </div>
-          <div className="grid gap-2 relative">
-              <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Senha</p>
+          <div className="grid gap-2 relative ml-10">
+              <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Matricula</p>
             <Input 
                 id="password" 
-                type="password"
-                placeholder="******"
-                className="h-16 pt-4 rounded-xs"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                placeholder="345678"
+                className="h-16 pt-4 rounded-xs w-80"
+                value={registration}
+                onChange={(e) => setRegistration(e.target.value)}
                 required />
           </div>
+          <div className="grid gap-2 relative ml-10">
+            <p className="absolute left-3 top-3 text-xs uppercase font-normal text-zinc-400">Senha</p>
+            <Input
+              id="user"
+              type="password"
+              placeholder="******"
+              className="h-16 pt-5 rounded-xs w-80"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="flex items-center gap-2 mt-4 ml-10">
+          <input type="checkbox" name="" id="" />
+          <span className='underline text-[11px] text-zinc-400'>Eu concordo com os Termos de Serviço e Responsabilidade.</span>
         </div>
       </form>
     </CardContent>
@@ -112,10 +106,15 @@ export default function CardRegister() {
       {error && <p className="error">{error}</p>}
       <Button 
       type="submit" 
-      className="w-full rounded-xs h-14 bg-[#4CAF50] text-xs font-light cursor-pointer hover:bg-[#FF873C]"
+      className="w-80 rounded-xs h-14 bg-[#4CAF50]  text-xs font-light cursor-pointer hover:bg-[#FF873C]"
       onClick={handleLogin}>
-        ENTRAR
+        CRIAR CONTA
       </Button>
+      <a href="/register">
+        <span className='text-xs text-zinc-400 hover:underline cursor-pointer'>
+          Já possui uma conta? <span className='text-[#4CAF50]'>Entre</span>
+        </span> 
+      </a>
     </CardFooter>
   </Card>
     
