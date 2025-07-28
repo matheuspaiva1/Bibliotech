@@ -1,7 +1,13 @@
+import LayoutPages from '@/app/Components/LayoutPages'
 import React from 'react'
 
 export default function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+      <LayoutPages>
+        
+      </LayoutPages>
+
+    </div>
   )
 }
